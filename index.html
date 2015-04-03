@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="tictactoeApp" >
+<head>
+	<title>Tic Tac Toe</title>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<!-- Angular -->
+	<script src="js/angular.js"></script>
+	<!--firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js">
+    </script>
+	<!-- our Angular Module -->
+	<script src="js/app.js"></script>
+	<!-- our Angular Controller -->
+	<script src="js/TictactoeController.js"></script>
+</head>
+<body ng-controller="TictactoeController as tictactoe" >
+<h1>Tic Tac Toe</h1>
+	<div class="winnerId">
+		{{tictactoe.game.winner}}
+	</div>
+	<br>
+	<div id="board">
+		<div class="square" ng-repeat="t in tictactoe.game.squares" ng-click="tictactoe.playerMove($index)">		<img ng-src="{{t.image}}">
+		</div>
+	</div>
+</body>
+</html> 
+
+

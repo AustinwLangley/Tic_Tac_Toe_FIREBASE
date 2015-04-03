@@ -1,0 +1,40 @@
+body {
+background-color: green;
+}
+
+h1{
+	text-align: center;
+	color: white;
+	
+}
+
+#board {
+width: 600px;
+height: 600px;
+background-color: gray;
+margin: auto;
+border: 1px solid black;
+
+}
+
+.square {
+width: 197px;
+height: 197px;
+background-color: white;
+border: 1px solid black;
+display: inline-block;
+
+}
+
+img {
+
+width: 198px;
+height: 198px;
+
+}
+
+.winnerId{
+	text-align: center;
+	font-size: 100px;
+	color: white;
+}
