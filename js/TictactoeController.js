@@ -6,8 +6,7 @@ angular
 
     function TictactoeController($firebaseObject){
         var self = this;
-            self.showWinner = false;
-
+            
         self.game = syncGameWithFirebase();
         self.playerMove = playerMove; //sets playerMove()function as a property of the controller
         self.playerOneTurn = playerOneTurn;
@@ -24,6 +23,7 @@ angular
                 gameObject.squares = [];
                 gameObject.winner = "";
                 gameObject.playerTurn = "one";
+                gameObject.showWinner = false;
                 gameObject.playerOneWinnerCount;
                 gameObject.playerTwoWinnerCount;
 
@@ -63,7 +63,7 @@ angular
                     if (self.game.winner === "The Winner is player one" || 
                         self.game.winner === "The Winner is player two" || 
                         self.game.winner === "Cat's game"){
-                        self.showWinner = true;
+                        self.game.showWinner = true;
                     }
                     self.game.$save();
                 }
@@ -84,7 +84,7 @@ angular
                     if (self.game.winner === "The Winner is player one" || 
                         self.game.winner === "The Winner is player two" || 
                         self.game.winner === "Cat's game"){
-                        self.showWinner = true;
+                        self.game.showWinner = true;
                     }
                     self.game.$save();
                 }           
@@ -97,7 +97,7 @@ angular
         }
 
         function resetGame(){
-                self.showWinner = false;
+                self.game.showWinner = false;
                 self.game.winner = "";
                 self.game.playerTurn = "one";
                 for(var i = 0; i < 9; i++){
