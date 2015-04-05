@@ -71,9 +71,12 @@ span{
   color: white;
   z-index: 10;
   position: relative;
+  top: 170px;
   background-color: black;
   padding: 50px;
   display: block;
+  font-family: starcraft;
+  color: rgb(244, 212, 113);
 }
 
 #winnerCount{
@@ -89,7 +92,8 @@ span{
 
 #scoreButton {
 	cursor: pointer;
-	color: #333;
+	/*color: #333;*/
+	color: rgb(244, 212, 113);
   	padding: 15px;
  	margin-top: 15px;
  	padding-top: 20px;
@@ -97,10 +101,12 @@ span{
 }
 
 #playButton {
-	
-
 	font-family: starcraft;
+	padding: 10px 30px;
+}
 
+button:hover{
+	background-color:rgb(42, 120, 193);
 }
 
 #playerOne{
