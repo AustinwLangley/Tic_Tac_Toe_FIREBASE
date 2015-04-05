@@ -1,40 +1,114 @@
 body {
-background-color: green;
+	  padding-top: 20px;
+	  background-image: url("./Tic_Tac_Toe_Images/SC2_background.jpg");
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  background-color: #000000;	
+}
+
+@font-face {
+    font-family: starcraft;
+    src: url(Starcraft_Normal.ttf);
+}
+
+p {
+	color: rgb(244, 212, 113);
+	text-align: center;
+	font-size: 25px;
+	font-family: starcraft;
 }
 
 h1{
 	text-align: center;
-	color: white;
-	
+	color: rgb(244, 212, 113);
+	font-size: 20pt;
+	font-family: starcraft;
+}
+
+img {
+	width: 198px;
+	height: 198px;
+	color: transparent;
+}
+
+span{
+	font-family: starcraft;
+	color: rgb(244, 212, 113);
+}
+
+#gametitle{
+  position: absolute;
+  left: 830px;
+  top: 5px;
+  font-size: 40px;
+  font-family: starcraft;
 }
 
 #board {
-width: 600px;
-height: 600px;
-background-color: gray;
-margin: auto;
-border: 1px solid black;
+	width: 700px;
+	height: 600px;
+	margin: auto;
+	cursor: pointer;
+	position: absolute;
+  	left: 615px;
+ 	top: 70px;
 
 }
 
 .square {
-width: 197px;
-height: 197px;
-background-color: white;
-border: 1px solid black;
-display: inline-block;
-
-}
-
-img {
-
-width: 198px;
-height: 198px;
+  width: 197px;
+  height: 197px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 0px solid black;
+  display: inline-block;
+  margin: 10px;
 
 }
 
 .winnerId{
-	text-align: center;
-	font-size: 100px;
-	color: white;
+  text-align: center;
+  font-size: 100px;
+  color: white;
+  z-index: 10;
+  position: relative;
+  background-color: black;
+  padding: 50px;
+  display: none;
 }
+
+#winnerCount{
+	text-align: center;
+	font-size: 30px;
+	color: white;
+	position: absolute;
+  	left: 1455px;
+ 	top: 70px;
+ 	background-color: rgba(0, 0, 0, 0.5);
+ 	padding: 20px;
+}
+
+#scoreButton {
+	cursor: pointer;
+	color: #333;
+  	padding: 15px;
+ 	margin-top: 15px;
+ 	padding-top: 20px;
+ 	font-family: starcraft;
+}
+
+#playerOne{
+	height: 200px;
+	width: 200px;
+	margin-top: 60px;
+	margin-left: 225px
+}
+
+#playerTwo{
+	height: 200px;
+	width: 200px;
+	margin-top: 50px;
+	margin-left: 225px
+}
+
+
+

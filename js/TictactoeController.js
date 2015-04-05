@@ -6,14 +6,13 @@ angular
 
     function TictactoeController($firebaseObject){
         var self = this;
-        var playerTurn = "one";
 
         self.game = syncGameWithFirebase();
         self.playerMove = playerMove; //sets playerMove()function as a property of the controller
         self.playerOneTurn = playerOneTurn;
         self.playerTwoTurn = playerTwoTurn;
-        // self.winner = "";
-
+        self.resetGame = resetGame;
+        
         function syncGameWithFirebase(){
             var ref = new Firebase('https://tictactoewdi.firebaseio.com/');
             var gameObject = $firebaseObject(ref);
@@ -23,27 +22,23 @@ angular
                 gameObject.score = 0;
                 gameObject.squares = [];
                 gameObject.winner = "";
+                gameObject.playerTurn = "one";
+                gameObject.playerOneWinnerCount;
+                gameObject.playerTwoWinnerCount;
+
                 //populates array values
                 for(var i = 0; i < 9; i++){
                     gameObject.squares.push({image:"", hasPlayer: false, playerOne: false, playerTwo: false});
            		} //closes for-loop
                 gameObject.$save();  //Synchronizes local game changes back to the Firebase server.
-                
-                // changeValueInFirebase();
-            
             }); // closes loaded function
             return gameObject;
         }//closes the syncGameWithFirebase function
 
-        // function changeValueInFirebase(){
-        //         self.game.squares[3].hasPlayer = true;
-        //         self.game.$save();  
-        // }
-
         function playerMove($index){
-                if (self.game.winner === ""){ //this condition will allow the game to end once 
-                                         // a winner is declared. So no more moves can be played.
-                    if (playerTurn === "one"){
+                //this condition will allow the game to end once a winner is declared. So no more moves can be played.
+                if (self.game.winner === ""){ 
+                    if (self.game.playerTurn === "one"){
                         playerOneTurn($index);
                     }
                     else {
@@ -53,27 +48,47 @@ angular
             };
         function playerOneTurn($index){
                 if (self.game.squares[$index].hasPlayer === false){
-                    self.game.squares[$index].image = "./Tic_Tac_Toe_Images/x.png"  
+                    self.game.squares[$index].image = "./Tic_Tac_Toe_Images/Zealot_small.jpg"  
                     self.game.squares[$index].hasPlayer = true;
                     self.game.squares[$index].playerOne = true;
-                    playerTurn = "two";
+                    self.game.playerTurn = "two";
                     winnerCheck();
+                    if (self.game.winner === "The Winner is player one"){
+                        self.game.playerOneWinnerCount ++; 
+                    }
+                    if (self.game.winner === "The Winner is player two"){
+                        self.game.playerTwoWinnerCount ++; 
+                    }
                     self.game.$save();
-                    return playerTurn;
+
+                    return self.game.playerTurn;
                 }
             };   
         function playerTwoTurn($index){
                 if (self.game.squares[$index].hasPlayer === false){
-                    self.game.squares[$index].image= "./Tic_Tac_Toe_Images/o.png" 
+                    self.game.squares[$index].image= "./Tic_Tac_Toe_Images/marauder_small.jpg" 
                     self.game.squares[$index].hasPlayer = true;
                     self.game.squares[$index].playerTwo = true;
-                    playerTurn = "one"
+                    self.game.playerTurn = "one"
                     winnerCheck();
+                    if (self.game.winner === "The Winner is player one"){
+                        self.game.playerOneWinnerCount ++; 
+                    }
+                    if (self.game.winner === "The Winner is player two"){
+                        self.game.playerTwoWinnerCount ++; 
+                    }
                     self.game.$save();
-                    return playerTurn;
+                    return self.game.playerTurn;
                 }           
             }; 
-function winnerCheck(){
+
+        function resetGame(){
+                self.game.playerOneWinnerCount = 0;
+                self.game.playerTwoWinnerCount = 0;
+                self.game.$save();
+        }
+
+        function winnerCheck(){
                 if (self.game.squares[0].playerOne === true && self.game.squares[1].playerOne === true && self.game.squares[2].playerOne === true && self.game.winner!== "The Winner is player one" &&
                     self.game.winner !== "The Winner is player two")
                 {

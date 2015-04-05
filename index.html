@@ -2,6 +2,8 @@
 <html ng-app="tictactoeApp" >
 <head>
 	<title>Tic Tac Toe</title>
+	<!-- Normailize CSS -->
+	<link rel="stylesheet" type="text/css" href="normalize.css">
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<!-- Angular -->
@@ -9,22 +11,41 @@
 	<!--firebase -->
     <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
     <!-- AngularFire -->
-    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js">
-    </script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
 	<!-- our Angular Module -->
 	<script src="js/app.js"></script>
 	<!-- our Angular Controller -->
 	<script src="js/TictactoeController.js"></script>
 </head>
 <body ng-controller="TictactoeController as tictactoe" >
-<h1>Tic Tac Toe</h1>
+	<div id="playerOne">
+		<p>Player 1</p>
+		<img src="./Tic_Tac_Toe_Images/Zealot_small.jpg">
+	</div>
+	<br>
+	<br>
+	<div id="playerTwo">
+		<p>Player 2</p>
+		<img src="./Tic_Tac_Toe_Images/marauder_small.jpg">
+	</div>
+	<h1 id="gametitle">Tic Tac Toe</h1>
 	<div class="winnerId">
 		{{tictactoe.game.winner}}
+		<button>CLEAR BOARD</button>
 	</div>
 	<br>
 	<div id="board">
-		<div class="square" ng-repeat="t in tictactoe.game.squares" ng-click="tictactoe.playerMove($index)">		<img ng-src="{{t.image}}">
+		<div class="square" ng-repeat="t in tictactoe.game.squares" ng-click="tictactoe.playerMove($index)">   <img ng-src="{{t.image}}">
 		</div>
+	</div>
+	<div id="winnerCount">
+		<h1>Score</h1>
+		<span>Player One: {{tictactoe.game.playerOneWinnerCount}}</span><br><br>
+		<span>Player Two: {{tictactoe.game.playerTwoWinnerCount}}</span>
+		<br>
+			<button id="scoreButton" ng-click="tictactoe.resetGame()">
+			RESET SCORE
+			</button>
 	</div>
 </body>
 </html> 
