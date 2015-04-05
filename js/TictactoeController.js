@@ -6,11 +6,13 @@ angular
 
     function TictactoeController($firebaseObject){
         var self = this;
+            self.showWinner = false;
 
         self.game = syncGameWithFirebase();
         self.playerMove = playerMove; //sets playerMove()function as a property of the controller
         self.playerOneTurn = playerOneTurn;
         self.playerTwoTurn = playerTwoTurn;
+        self.resetScore = resetScore;
         self.resetGame = resetGame;
         
         function syncGameWithFirebase(){
@@ -19,7 +21,6 @@ angular
 
 		   //initialize values in the gameObject once it's loaded..."Promise"
             gameObject.$loaded(function(){
-                gameObject.score = 0;
                 gameObject.squares = [];
                 gameObject.winner = "";
                 gameObject.playerTurn = "one";
@@ -59,9 +60,12 @@ angular
                     if (self.game.winner === "The Winner is player two"){
                         self.game.playerTwoWinnerCount ++; 
                     }
+                    if (self.game.winner === "The Winner is player one" || 
+                        self.game.winner === "The Winner is player two" || 
+                        self.game.winner === "Cat's game"){
+                        self.showWinner = true;
+                    }
                     self.game.$save();
-
-                    return self.game.playerTurn;
                 }
             };   
         function playerTwoTurn($index){
@@ -77,16 +81,35 @@ angular
                     if (self.game.winner === "The Winner is player two"){
                         self.game.playerTwoWinnerCount ++; 
                     }
+                    if (self.game.winner === "The Winner is player one" || 
+                        self.game.winner === "The Winner is player two" || 
+                        self.game.winner === "Cat's game"){
+                        self.showWinner = true;
+                    }
                     self.game.$save();
-                    return self.game.playerTurn;
                 }           
             }; 
 
-        function resetGame(){
+        function resetScore(){
                 self.game.playerOneWinnerCount = 0;
                 self.game.playerTwoWinnerCount = 0;
                 self.game.$save();
         }
+
+        function resetGame(){
+                self.showWinner = false;
+                self.game.winner = "";
+                self.game.playerTurn = "one";
+                for(var i = 0; i < 9; i++){
+                    self.game.squares[i].hasPlayer = false;
+                    self.game.squares[i].image = "" ;
+                    self.game.squares[i].hasPlayer = false;
+                    self.game.squares[i].playerOne = false;
+                    self.game.squares[i].playerTwo = false;
+                } //closes for-loop
+                self.game.$save();
+        }
+
 
         function winnerCheck(){
                 if (self.game.squares[0].playerOne === true && self.game.squares[1].playerOne === true && self.game.squares[2].playerOne === true && self.game.winner!== "The Winner is player one" &&

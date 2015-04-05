@@ -29,9 +29,9 @@
 		<img src="./Tic_Tac_Toe_Images/marauder_small.jpg">
 	</div>
 	<h1 id="gametitle">Tic Tac Toe</h1>
-	<div class="winnerId">
+	<div ng-show="tictactoe.showWinner" class="winnerId">
 		{{tictactoe.game.winner}}
-		<button>CLEAR BOARD</button>
+		<button id="playButton" ng-click="tictactoe.resetGame()">PLAY AGAIN</button>
 	</div>
 	<br>
 	<div id="board">
@@ -43,7 +43,7 @@
 		<span>Player One: {{tictactoe.game.playerOneWinnerCount}}</span><br><br>
 		<span>Player Two: {{tictactoe.game.playerTwoWinnerCount}}</span>
 		<br>
-			<button id="scoreButton" ng-click="tictactoe.resetGame()">
+			<button id="scoreButton" ng-click="tictactoe.resetScore()">
 			RESET SCORE
 			</button>
 	</div>
