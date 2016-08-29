@@ -18,35 +18,38 @@
 	<script src="js/TictactoeController.js"></script>
 </head>
 <body ng-controller="TictactoeController as tictactoe" >
-	<div id="playerOne">
-		<p>Player 1</p>
-		<img src="./Tic_Tac_Toe_Images/Zealot_small.jpg">
-	</div>
-	<br>
-	<br>
-	<div id="playerTwo">
-		<p>Player 2</p>
-		<img src="./Tic_Tac_Toe_Images/marauder_small.jpg">
-	</div>
+	<div class="main-container">
 	<h1 id="gametitle">Tic Tac Toe</h1>
-	<div ng-show="tictactoe.game.showWinner" class="winnerId">   
-		{{tictactoe.game.winner}}<br>
-		<button id="playButton" ng-click="tictactoe.resetGame()">PLAY AGAIN</button>
-	</div>
-	<br>
-	<div id="board">
-		<div class="square" ng-repeat="t in tictactoe.game.squares" ng-click="tictactoe.playerMove($index)">   <img ng-src="{{t.image}}">
+		<!-- <div id="playerOne">
+			<p>Player 1</p>
+			<img src="./Tic_Tac_Toe_Images/guy1.png">
 		</div>
-	</div>
-	<div id="winnerCount">
-		<h1>Score</h1>
-		<span>Player One: {{tictactoe.game.playerOneWinnerCount}}</span><br><br>
-		<span>Player Two: {{tictactoe.game.playerTwoWinnerCount}}</span>
 		<br>
-			<button id="scoreButton" ng-click="tictactoe.resetScore()">
-			RESET SCORE
-			</button>
-	</div>
+		<br>
+		<div id="playerTwo">
+			<p>Player 2</p>
+			<img src="./Tic_Tac_Toe_Images/guy2.png">
+		</div> -->
+		
+		<div ng-show="tictactoe.game.showWinner" class="winnerId">   
+			{{tictactoe.game.winner}}<br>
+			<button id="playButton" ng-click="tictactoe.resetGame()">PLAY AGAIN</button>
+		</div>
+		<br>
+		<div id="board">
+			<div class="square" ng-repeat="t in tictactoe.game.squares" ng-click="tictactoe.playerMove($index)">   <img ng-src="{{t.image}}">
+			</div>
+		</div>
+		<!-- <div id="winnerCount">
+			<h1>Score</h1>
+			<span>Player One: {{tictactoe.game.playerOneWinnerCount}}</span><br><br>
+			<span>Player Two: {{tictactoe.game.playerTwoWinnerCount}}</span>
+			<br>
+				<button id="scoreButton" ng-click="tictactoe.resetScore()">
+				RESET SCORE
+				</button>
+		</div>
+	</div> -->
 </body>
 </html> 
 

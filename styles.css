@@ -1,9 +1,14 @@
 body {
 	padding-top: 20px;
-	background-image: url("./Tic_Tac_Toe_Images/SC2_background.jpg");
+	background-image: url(./Tic_Tac_Toe_Images/SC2_background.jpg);
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: contain;
 	background-color: #000000;	
+
+}
+
+.main-container {
+	height: 800px;
 }
 
 @font-face {
@@ -21,13 +26,12 @@ p {
 h1{
 	text-align: center;
 	color: rgb(244, 212, 113);
-	font-size: 20pt;
 	font-family: starcraft;
 }
 
 img {
-	width: 198px;
-	height: 198px;
+	width: 150px;
+	height: 150px;
 }
 
 span{
@@ -36,30 +40,29 @@ span{
 }
 
 #gametitle{
-	position: absolute;
-	left: 790px;
-	top: 5px;
-	font-size: 40px;
+	font-size: 3.0em;
+  padding-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 	font-family: starcraft;
 }
 
 #board {
-	width: 700px;
-	height: 600px;
-	margin: auto;
+	width: 480px;
+	height: auto;
+	margin: 0 auto;
 	cursor: pointer;
-	position: absolute;
-  	left: 615px;
- 	top: 70px;
+  padding-right: 29px;
+  position: relative;
 }
 
 .square {
-	width: 197px;
-	height: 197px;
+	width: 150px;
+	height: 150px;
 	background-color: rgba(0, 0, 0, 0.25);
 	border: 0px solid black;
 	display: inline-block;
-	margin: 10px;
+	margin: 5px;
 }
 
 .winnerId{

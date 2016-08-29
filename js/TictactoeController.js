@@ -53,7 +53,7 @@ angular
         //This function executes if it is player one's turn
         function playerOneTurn($index){
                 if (self.game.squares[$index].hasPlayer === false){
-                    self.game.squares[$index].image = "./Tic_Tac_Toe_Images/Zealot_small.jpg"  
+                    self.game.squares[$index].image = "./Tic_Tac_Toe_Images/guy1.png"  
                     self.game.squares[$index].hasPlayer = true;
                     self.game.squares[$index].playerOne = true;
                     self.game.playerTurn = "two";
@@ -75,7 +75,7 @@ angular
         //this function executes if it is player two's turn
         function playerTwoTurn($index){
                 if (self.game.squares[$index].hasPlayer === false){
-                    self.game.squares[$index].image = "./Tic_Tac_Toe_Images/marauder_small.jpg" 
+                    self.game.squares[$index].image = "./Tic_Tac_Toe_Images/guy2.png" 
                     self.game.squares[$index].hasPlayer = true;
                     self.game.squares[$index].playerTwo = true;
                     self.game.playerTurn = "one"
